@@ -41,7 +41,7 @@ pps <- function(x, y, z, window = sphwin(), check = TRUE) {
     n <- nx
   }
   if (check == TRUE) {
-    sp2obj <- sp2(matrix(c(long, lat), ncol = 2))
+    sp2obj <- sp2(matrix(c(lat, long), ncol = 2))
     inside <- in.W(points = sp2obj, win = window)
     n_outside <- sum(!inside)
     if(n_outside > 0) warning(paste(n_outside, "point(s) were removed due to not being contained in the specified window"))
