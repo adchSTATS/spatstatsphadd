@@ -14,7 +14,7 @@ The order of the vector entries (matrix columns) should be longitude, latitude a
 
 \item{deg}{Logical value indicating whether the input is in randians or degrees. Radian is default.}
 
-\item{rep}{Determine the representation of the spherical coordinates. 
+\item{rep}{States the representation of the spherical coordinates.
 If \code{"sph"} long will range from \code{0} to \code{2 * pi} and lat will range from \code{0} to \code{pi}.
 The classical representation of spherical coordinates in radians.
 If \code{"geo"} long will range from \code{-pi} to \code{pi} and lat will range from \code{0} to \code{pi}.

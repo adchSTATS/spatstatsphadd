@@ -6,7 +6,7 @@
 #' If the input has 2 entries or columns it will be assumed that the radial distance i 1.
 #' The order of the vector entries (matrix columns) should be longitude, latitude and radial distance (if applicable).
 #' @param deg Logical value indicating whether the input is in randians or degrees. Radian is default.
-#' @param rep Determine the representation of the spherical coordinates. 
+#' @param rep States the representation of the spherical coordinates.
 #' If \code{"sph"} long will range from \code{0} to \code{2 * pi} and lat will range from \code{0} to \code{pi}.
 #' The classical representation of spherical coordinates in radians.
 #' If \code{"geo"} long will range from \code{-pi} to \code{pi} and lat will range from \code{0} to \code{pi}.
@@ -32,13 +32,13 @@ sph2car <- function(X, deg = FALSE, rep = "sph") {
     lat <- lat * pi / 180
   }
   if(rep == "geo") {
-    long %% (2 * pi) 
+    long %% (2 * pi)
   } else if(rep != "sph") {
     stop(paste(sQuote("rep"), "should be", sQuote("sph"), "or", sQuote("geo")))
   }
   sinlat <- sin(lat)
-  out <- r * cbind(sinlat * cos(long), 
-                   sinlat * sin(long), 
+  out <- r * cbind(sinlat * cos(long),
+                   sinlat * sin(long),
                    cos(lat))
   out <- as.data.frame(ifelse(abs(out) < .Machine$double.eps, 0, out))
   colnames(out) <- c("x", "y", "z")
