@@ -7,11 +7,15 @@
 kdesph(x, kappa, obs, first = "long")
 }
 \arguments{
-\item{x}{A numeric vector of length >= 2. A point on the sphere for which we want to calculate the density.}
+\item{x}{A numeric vector of length 2 (may be longer but only the first two entries are used).
+Should represent a point on the sphere for which we want to calculate the density.
+Given by longitude (should range from 0 to 2 * pi) and colatitude (should range from 0 to pi).}
 
 \item{kappa}{A consentration parameter}
 
-\item{obs}{A dataframe with columns \code{long} and \code{lat}. The observed point pattern on the sphere.}
+\item{obs}{A dataframe with columns \code{long} and \code{lat}.
+The observed point pattern on the sphere.
+Given by longitude (should range from 0 to 2 * pi) and colatitude (should range from 0 to pi).}
 
 \item{first}{A parameter indicating whether the first entry of \code{X} is the longitude or colatitude.}
 }
@@ -22,7 +26,7 @@ A numeric of lenght 1. The density at point \code{X}.
 Function for calculating the dentisty at a location x given in longitudinal and colattitudinal angles
 }
 \details{
-This method corresponds to a mixture of Von-Mises Fisher distributions, 
+This method corresponds to a mixture of Von-Mises Fisher distributions,
 with each observed point constituting the mean of a Von-Mises Fisher distribution, all with the same consentration parameter \code{kappa}.
 }
 \author{
