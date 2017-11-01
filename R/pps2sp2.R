@@ -6,5 +6,5 @@
 #' @export
 pps2sp2 <- function(X) {
   stopifnot(verifyclass(X, "pps"))
-  sp2(data.frame(X$data$lat, X$data$long), win = X$window)
+  sp2(matrix(c(X$data$lat, X$data$long), ncol = 2), win = X$window)
 }
