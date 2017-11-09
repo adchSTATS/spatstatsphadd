@@ -28,7 +28,7 @@ Ksph <- function(X, r = NULL, rmax = NULL, nrval = 128, correction = c("un", "is
     if (is.null(rmax)) {
       rmax <- pi
     }
-    r_vec <- seq(from = 0, to = rmax, length.out = nrval)
+    r <- seq(from = 0, to = rmax, length.out = nrval)
   }
   sp2_obj <- sp2(cbind(X$data$lat, X$data$long), win = X$window)
   Ksphere(X = sp2_obj, win = X$window, r = r, lambdavalues = intenss, correction = "iso")
