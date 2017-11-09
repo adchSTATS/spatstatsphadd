@@ -4,13 +4,17 @@
 \alias{Ksph}
 \title{A modification of the Ksphere function}
 \usage{
-Ksph(X, r = NULL, correction = c("un", "iso", "rs", "rsm"),
-  intenss = NULL, ...)
+Ksph(X, r = NULL, rmax = NULL, nrval = 128, correction = c("un", "iso",
+  "rs", "rsm"), intenss = NULL, ...)
 }
 \arguments{
 \item{X}{An object of class \code{\link{pps}}}
 
 \item{r}{Optional. Numeric vector of radii at which K(r) will be evaluated.}
+
+\item{rmax}{Optional. Maximum value of argument r for which Ksph(r) will be estimated.}
+
+\item{nrval}{Optional. Number of values of r for which Ksph(r) will be estimated.}
 
 \item{correction}{Character string or character vector specifying the choise of edge corrections.}
 

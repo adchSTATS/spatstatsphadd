@@ -3,6 +3,8 @@
 #' Function that calculates the inhomogeneous K-functio as well as the lambdavalues required by \code{spherstat}
 #' @param X An object of class \code{\link{pps}}
 #' @param r Optional. Numeric vector of radii at which K(r) will be evaluated.
+#' @param rmax Optional. Maximum value of argument r for which Ksph(r) will be estimated.
+#' @param nrval Optional. Number of values of r for which Ksph(r) will be estimated.
 #' @param correction Character string or character vector specifying the choise of edge corrections.
 #' @param intenss Optional. A function or vector representing the intensity at the observed locations.
 #' Only applicable for inhomgeneous point processes.
@@ -16,11 +18,17 @@
 #' @author Andreas Christoffersen \email{andreas@math.aau.dk}
 #' @import spherstat spatstat
 #' @export
-Ksph <- function(X, r = NULL, correction = c("un", "iso", "rs", "rsm"), intenss = NULL, ...) {
+Ksph <- function(X, r = NULL, rmax = NULL, nrval = 128, correction = c("un", "iso", "rs", "rsm"), intenss = NULL, ...) {
   stopifnot(verifyclass(X, "pps"))
   stopifnot(is.null(intenss) || is.function(intenss) || (is.numeric(intenss) && length(intenss) == npoints(X)))
   if (is.function(intenss)) {
     intenss <- apply(data.frame(X$data$long, X$data$lat), MARGIN = 1, FUN = intenss, ...)
+  }
+  if (is.null(r)) {
+    if (is.null(rmax)) {
+      rmax <- pi
+    }
+    r_vec <- seq(from = 0, to = rmax, length.out = nrval)
   }
   sp2_obj <- sp2(cbind(X$data$lat, X$data$long), win = X$window)
   Ksphere(X = sp2_obj, win = X$window, r = r, lambdavalues = intenss, correction = "iso")
