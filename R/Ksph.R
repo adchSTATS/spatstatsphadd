@@ -18,7 +18,7 @@
 #' @author Andreas Christoffersen \email{andreas@math.aau.dk}
 #' @import spherstat spatstat
 #' @export
-Ksph <- function(X, r = NULL, rmax = NULL, nrval = 128, correction = c("un", "iso", "rs", "rsm"), intenss = NULL, ...) {
+Ksph <- function(X, r = NULL, rmax = NULL, nrval = 128, correction = c("un"), intenss = NULL, ...) {
   stopifnot(verifyclass(X, "pps"))
   stopifnot(is.null(intenss) || is.function(intenss) || (is.numeric(intenss) && length(intenss) == npoints(X)))
   if (is.function(intenss)) {
@@ -31,5 +31,5 @@ Ksph <- function(X, r = NULL, rmax = NULL, nrval = 128, correction = c("un", "is
     r <- seq(from = 0, to = rmax, length.out = nrval)
   }
   sp2_obj <- sp2(cbind(X$data$lat, X$data$long), win = X$window)
-  Ksphere(X = sp2_obj, win = X$window, r = r, lambdavalues = intenss, correction = "iso")
+  Ksphere(X = sp2_obj, win = X$window, r = r, lambdavalues = intenss, correction = correction)
 }

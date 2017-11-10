@@ -4,8 +4,8 @@
 \alias{Ksph}
 \title{A modification of the Ksphere function}
 \usage{
-Ksph(X, r = NULL, rmax = NULL, nrval = 128, correction = c("un", "iso",
-  "rs", "rsm"), intenss = NULL, ...)
+Ksph(X, r = NULL, rmax = NULL, nrval = 128, correction = c("un"),
+  intenss = NULL, ...)
 }
 \arguments{
 \item{X}{An object of class \code{\link{pps}}}
