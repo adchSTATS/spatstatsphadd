@@ -14,11 +14,13 @@
 #' That is at this point not possible.
 #' This function calculates the \code{lambdavalues} and the applies \code{\link{Ksphere}}.
 #' The \code{lambdavalues} are calculated based on the function \code{FUN}.
+#'
+#' If \code{X$window$type == "sphere"} then no edge correction is done eventhough \code{correction = "iso"}.
 #' @return An object as returned by \code{Ksphere}. An \code{\link{fv}} object.
 #' @author Andreas Christoffersen \email{andreas@math.aau.dk}
 #' @import spherstat spatstat
 #' @export
-Ksph <- function(X, r = NULL, rmax = NULL, nrval = 128, correction = c("un"), intenss = NULL, ...) {
+Ksph <- function(X, r = NULL, rmax = NULL, nrval = 128, correction = "iso", intenss = NULL, ...) {
   stopifnot(verifyclass(X, "pps"))
   stopifnot(is.null(intenss) || is.function(intenss) || (is.numeric(intenss) && length(intenss) == npoints(X)))
   if (is.function(intenss)) {

@@ -4,7 +4,7 @@
 \alias{Ksph}
 \title{A modification of the Ksphere function}
 \usage{
-Ksph(X, r = NULL, rmax = NULL, nrval = 128, correction = c("un"),
+Ksph(X, r = NULL, rmax = NULL, nrval = 128, correction = "iso",
   intenss = NULL, ...)
 }
 \arguments{
@@ -35,6 +35,8 @@ Hence, when applying the \code{\link{envelope}} function from \code{\link{spatst
 That is at this point not possible.
 This function calculates the \code{lambdavalues} and the applies \code{\link{Ksphere}}.
 The \code{lambdavalues} are calculated based on the function \code{FUN}.
+
+If \code{X$window$type == "sphere"} then no edge correction is done eventhough \code{correction = "iso"}.
 }
 \author{
 Andreas Christoffersen \email{andreas@math.aau.dk}
