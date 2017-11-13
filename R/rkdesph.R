@@ -28,7 +28,7 @@ rkdesph <- function(kappa, obs, nsim = 1, np = "Poisson", drop = TRUE, ncores = 
   if (np == "Poisson"){
     np <- rpois(nsim, npoints(obs))
   }
-  mclapply(1:nsim, Fun = function(i) {
+  mclapply(1:nsim, FUN = function(i) {
     tmp <- as.data.frame(rmovMF(np[i], kappa * obs_car)[, 1:3])
     tmp2 <- do.call(rbind, apply(tmp, 1, car2sph, rep = "sph"))
     pps(x = tmp2$long, y = tmp2$lat, window = obs$window)
