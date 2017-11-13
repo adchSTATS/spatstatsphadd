@@ -4,13 +4,9 @@
 \alias{rkdesph}
 \title{Simulate from Spherical kernel density}
 \usage{
-rkdesph(np, kappa, obs, nsim, sph_coords = TRUE, drop = TRUE)
+rkdesph(kappa, obs, nsim = 1, np = "Poisson", drop = TRUE)
 }
 \arguments{
-\item{np}{Either a single number indicating the exact number of points in the simulated pattern
-or "Poisson" in which case the number of points in each simulated pattern will be Poisson distributed
-with mean equal to the number of points in the observed pattern}
-
 \item{kappa}{A consentration parameter}
 
 \item{obs}{A matrix with rows constituting either cartesian or spherical coordinates of the points.
@@ -21,7 +17,9 @@ The points need not have norm 1.}
 
 \item{nsim}{The number of point patterns to be simulated.}
 
-\item{sph_coords}{A logical value indicating wether the data supplied are in spherical or cartesian coordinates.}
+\item{np}{Either a single number indicating the exact number of points in the simulated pattern
+or "Poisson" in which case the number of points in each simulated pattern will be Poisson distributed
+with mean equal to the number of points in the observed pattern.}
 
 \item{drop}{A logical value indicating whether the output should be a \code{\link{sp2}} object of a list of \code{\link{sp2}} objects.
 This only has an effect if \code{nsim == 1}.}
