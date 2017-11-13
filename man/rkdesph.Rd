@@ -4,7 +4,7 @@
 \alias{rkdesph}
 \title{Simulate from Spherical kernel density}
 \usage{
-rkdesph(kappa, obs, nsim = 1, np = "Poisson", drop = TRUE)
+rkdesph(kappa, obs, nsim = 1, np = "Poisson", drop = TRUE, ncores = 1L)
 }
 \arguments{
 \item{kappa}{A consentration parameter}
@@ -23,6 +23,8 @@ with mean equal to the number of points in the observed pattern.}
 
 \item{drop}{A logical value indicating whether the output should be a \code{\link{sp2}} object of a list of \code{\link{sp2}} objects.
 This only has an effect if \code{nsim == 1}.}
+
+\item{ncores}{Number of cores for multiple simulation.}
 }
 \value{
 A \code{\link{sp2}} object or a list of \code{\link{sp2}} object with length equal to \code{nsim}.
