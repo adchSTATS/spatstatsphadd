@@ -26,6 +26,8 @@ rkdesph <- function(kappa, obs, nsim = 1, np = "Poisson", drop = TRUE, ncores = 
   obs_car <- as.matrix(sph2car(as.data.frame(obs$data)))
   if (np == "Poisson"){
     np <- rpois(nsim, npoints(obs))
+  } else if (is.numeric(np)) {
+    np <- rep(np, nsim)
   }
   out <- mclapply(1:nsim, FUN = function(i) {
     tmp <- as.data.frame(rmovMF(np[i], kappa * obs_car)[, 1:3])
