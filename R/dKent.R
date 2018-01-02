@@ -1,8 +1,7 @@
 #' Kent distribution density
 #'
 #' Function for calculating the dentisty at a location x given in cartesian coordinates
-#' @param x A numeric vector of length 3 or a matrix with 3 columns. 
-#' constituting the three dimensional coordinates of a point on the sphere.
+#' @param x An object of class \code{\link{pps}}
 #' @param kappa A non-negative numeric value. The consentration parameter
 #' @param beta A numeric value. The ovalness parameter.
 #' @param meandir A three dimensional vector. Determines where the density will be consentrated.
@@ -12,13 +11,17 @@
 #' @param majordir A three dimensional vector. Determines the axis that will be the major axis.
 #' Default will be the x-axis.
 #' @details If \code{2 * beta < kappa} then the distribution is a generalisation of the normal distribution to the sphere.
-#' The distribution is a extension of the von-Mises Fisher distribution (\code{beta = 0}). 
+#' The distribution is a extension of the von-Mises Fisher distribution (\code{beta = 0}).
 #' \code{(meandir, minordir, majordir)} is supposed to be a orthogonal triple of unit vectors.
-#' @return A numeric vector of length corresponding to the number of rows in x. 
+#' @return A numeric vector of length corresponding to the number of rows in x.
 #' The density at the points \code{X}.
 #' @author Andreas Christoffersen \email{andreas@math.aau.dk}
 #' @export
 dKent <- function(x, kappa, beta, meandir = NULL, minordir = NULL, majordir = NULL) {
+  if(!("pps" %in% class(x))) {
+    stop("x must be an object of class pps.")
+  }
+  x <- as.matrix(sph2car(as.data.frame(x$data)))
   const <- if(kappa == 0 & beta == 0) {
     4 * pi
   } else if(kappa == 0) {
@@ -53,8 +56,8 @@ dKent <- function(x, kappa, beta, meandir = NULL, minordir = NULL, majordir = NU
   if(is.vector(x)){
     x <- t(x)
   }
-  out <- exp(kappa * drop(tcrossprod(meandir, x)) 
-             + beta * (drop(tcrossprod(majordir, x))^2 
+  out <- exp(kappa * drop(tcrossprod(meandir, x))
+             + beta * (drop(tcrossprod(majordir, x))^2
                        - drop(tcrossprod(minordir, x))^2)) / const
   return(out)
 }

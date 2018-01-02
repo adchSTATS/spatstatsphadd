@@ -6,6 +6,7 @@
 #' @param trim option for handling the case otwo points lying on the boundary, in which case the correction factor is \code{Inf}.
 #' @details \code{1 / |W cup W_{eta - xi}|}
 #' @return A numeric matrix of edge correction weights.
+#' @import spatstat
 #' @export
 edge.Trans.pp3 <- function(X, trim = spatstat.options("maxedgewt")) {
   stopifnot(verifyclass(X, "pp3"))

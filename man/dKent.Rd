@@ -7,8 +7,7 @@
 dKent(x, kappa, beta, meandir = NULL, minordir = NULL, majordir = NULL)
 }
 \arguments{
-\item{x}{A numeric vector of length 3 or a matrix with 3 columns. 
-constituting the three dimensional coordinates of a point on the sphere.}
+\item{x}{An object of class \code{\link{pps}}}
 
 \item{kappa}{A non-negative numeric value. The consentration parameter}
 
@@ -24,7 +23,7 @@ Default will be the y-axis.}
 Default will be the x-axis.}
 }
 \value{
-A numeric vector of length corresponding to the number of rows in x. 
+A numeric vector of length corresponding to the number of rows in x.
 The density at the points \code{X}.
 }
 \description{
@@ -32,7 +31,7 @@ Function for calculating the dentisty at a location x given in cartesian coordin
 }
 \details{
 If \code{2 * beta < kappa} then the distribution is a generalisation of the normal distribution to the sphere.
-The distribution is a extension of the von-Mises Fisher distribution (\code{beta = 0}). 
+The distribution is a extension of the von-Mises Fisher distribution (\code{beta = 0}).
 \code{(meandir, minordir, majordir)} is supposed to be a orthogonal triple of unit vectors.
 }
 \author{

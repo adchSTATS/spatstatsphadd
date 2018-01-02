@@ -7,21 +7,22 @@
 dWatson(x, kappa, alpha = NULL)
 }
 \arguments{
-\item{x}{A numeric vector of length 3 or a matrix with 3 columns. constituting the three dimensional coordinates of a point on the sphere.}
+\item{x}{An object of class \code{\link{pps}}.}
 
 \item{kappa}{A numeric value. The consentration parameter. May be negative.}
 
-\item{alpha}{A numeric vector of lengthe 3. Determines the axis at which there will be rotationally symmetry.}
+\item{alpha}{A numeric vector of length 3. Determines the axis at which there will be rotationally symmetry.
+Default is the unitvector c(0, 1, 0).}
 }
 \value{
-A numeric vector of length corresponding to the number of rows in x. 
+A numeric vector of length corresponding to the number of rows in x.
 The density at the points \code{X}.
 }
 \description{
 Function for calculating the dentisty at a location x given in cartesian coordinates.
 }
 \details{
-If \code{kappa < 0} the distribution will be an equatorial girdle.
+If \code{kappa < 0} the distribution will be a girdle.
 If \code{kappa > 0} the distribution will be bimodal around the poles \code{alpha} and \code{-alpha}.
 }
 \author{

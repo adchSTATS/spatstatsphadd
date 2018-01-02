@@ -1,17 +1,22 @@
 #' Watson distribution density
-#' 
+#'
 #' Function for calculating the dentisty at a location x given in cartesian coordinates.
-#' @param x A numeric vector of length 3 or a matrix with 3 columns. constituting the three dimensional coordinates of a point on the sphere.
+#' @param x An object of class \code{\link{pps}}.
 #' @param kappa A numeric value. The consentration parameter. May be negative.
-#' @param alpha A numeric vector of lengthe 3. Determines the axis at which there will be rotationally symmetry.
-#' @details If \code{kappa < 0} the distribution will be an equatorial girdle.
+#' @param alpha A numeric vector of length 3. Determines the axis at which there will be rotationally symmetry.
+#' Default is the unitvector c(0, 1, 0).
+#' @details If \code{kappa < 0} the distribution will be a girdle.
 #' If \code{kappa > 0} the distribution will be bimodal around the poles \code{alpha} and \code{-alpha}.
-#' @return A numeric vector of length corresponding to the number of rows in x. 
+#' @return A numeric vector of length corresponding to the number of rows in x.
 #' The density at the points \code{X}.
 #' @author Andreas Christoffersen \email{andreas@math.aau.dk}
 #' @importFrom stats integrate pnorm
 #' @export
 dWatson <- function (x, kappa, alpha = NULL) {
+  if(!("pps" %in% class(x))) {
+    stop("x must be an object of class pps.")
+  }
+  x <- as.matrix(sph2car(as.data.frame(x$data)))
   if (is.null(alpha)) {
     alpha <- c(0, 1, 0)
   }
