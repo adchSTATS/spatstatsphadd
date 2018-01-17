@@ -16,7 +16,7 @@
 #' @param ncores Number of cores for multiple simulation.
 #' @return A \code{\link{sp2}} object or a list of \code{\link{sp2}} object with length equal to \code{nsim}.
 #' See also under \code{drop} for further details.
-#' @author Andreas Christoffersen \email{andreas@math.aau.dk}
+#' @author Andreas Dyreborg Christoffersen \email{andreas@math.aau.dk}
 #' @import spherstat genfun parallel
 #' @importFrom movMF rmovMF
 #' @importFrom stats rpois
@@ -37,5 +37,5 @@ rkdesph <- function(kappa, obs, nsim = 1, np = "Poisson", drop = TRUE, ncores = 
   if (drop & nsim == 1) {
     out <- out[[1]]
   }
-  return(out)
+  out
 }

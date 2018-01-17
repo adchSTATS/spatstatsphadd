@@ -34,5 +34,5 @@ See also under \code{drop} for further details.
 Function for simulating under a spherical kernel density.
 }
 \author{
-Andreas Christoffersen \email{andreas@math.aau.dk}
+Andreas Dyreborg Christoffersen \email{andreas@math.aau.dk}
 }

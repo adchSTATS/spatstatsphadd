@@ -13,6 +13,7 @@ Imports: spherstat,
          spatstat,
          spatstat.utils,
          stats,
+         Directional,
          genfun,
          parallel,
          movMF
